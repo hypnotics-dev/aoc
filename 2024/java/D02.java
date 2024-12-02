@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
@@ -14,6 +15,7 @@ public class D02 {
     System.out.println("Star One Test: " + starOne(CodeIO.getInputs(2024, "D02s.txt")));
     System.out.println("Star One Main: " + starOne(CodeIO.getInputs(2024, "D02.txt")));
     System.out.println("Star Two Test: " + starTwo(CodeIO.getInputs(2024, "D02s.txt")));
+    System.out.println("Star Two Main: " + starTwo(CodeIO.getInputs(2024, "D02.txt")));
   }
 
   private static List<Integer> reader(String line) {
@@ -47,7 +49,7 @@ public class D02 {
       Scanner scanner = new Scanner(file);
 
       while (scanner.hasNextLine()) {
-        safe += safeChainV2(reader(scanner.nextLine()), false) ? 1 : 0;
+        safe += safeChainV2(reader(scanner.nextLine())) ? 1 : 0;
       }
       scanner.close();
     } catch (FileNotFoundException e) {
@@ -75,5 +77,21 @@ public class D02 {
       cache = i;
     }
     return true;
+  }
+
+  private static boolean safeChainV2(List<Integer> list) {
+    if (safeChainV1(list)) return true;
+    else {
+      for (int i = 0; i < list.size(); i++) {
+        if (safeChainV1(remove(list, i))) return true;
+      }
+      return false;
+    }
+  }
+
+  private static List<Integer> remove(List<Integer> list, int remove) {
+    List<Integer> ret = new ArrayList<>(list);
+    ret.remove(remove);
+    return ret;
   }
 }

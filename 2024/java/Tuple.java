@@ -1,1 +1,1 @@
-/home/hypnotics/dev/proj/aoc/libs/java/Tuple.java
+../../libs/java/Tuple.java

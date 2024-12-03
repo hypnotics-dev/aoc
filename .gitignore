@@ -7,3 +7,5 @@ build
 builder/java/proj/src/main/java/com/adventofcode/
 
 builder/java/proj/src/build.gradle
+
+bin/

@@ -32,7 +32,6 @@ public class D03 {
     boolean dont = false;
     while (iter.hasNext()) {
       String node = iter.next();
-      // System.out.println(node);
       if (node.equals("do()")) dont = false;
       else if (node.equals("don't()")) dont = true;
       else if (!dont) total += mul(node);
@@ -59,9 +58,7 @@ public class D03 {
   }
 
   private static int mul(String mul) {
-    // System.out.println(mul);
     String[] ints = mul.substring(4, mul.length() - 1).split(",");
-    // System.out.println("ints 0: " + ints[0] + " ints 1: " + ints[1]);
     return Integer.parseInt(ints[0]) * Integer.parseInt(ints[1]);
   }
 }
